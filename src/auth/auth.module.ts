@@ -13,7 +13,7 @@ import { UserEntity } from 'src/user/user.entity'
 	providers: [AuthService, JwtStrategy],
 
 	imports: [
-		// ConfigModule.forRoot(),
+		ConfigModule,
 		JwtModule.registerAsync({
 			imports: [ConfigModule],
 			inject: [ConfigService],

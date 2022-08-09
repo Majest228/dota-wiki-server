@@ -9,14 +9,14 @@ export class UserEntity extends Base {
 	@Column({ select: false })
 	password: string
 
-	@Column({ unique: true })
-	login: ''
+	@Column({ unique: true, default: '' })
+	login: string
 
 	@Column({ default: '' })
-	name: ''
+	name: string
 
 	@Column({ default: '' })
-	surname: ''
+	surname: string
 
 	@Column({ default: false, name: 'is_verified' })
 	isVerified: boolean
