@@ -1,15 +1,17 @@
 import { Base } from 'src/utils/base.entity'
-import { Column, Entity } from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity('User')
-export class UserEntity extends Base {
+export class UserEntity {
+	@PrimaryGeneratedColumn('increment')
+	id: number
 	@Column({ unique: true })
 	email: string
 
 	@Column({ select: false })
 	password: string
 
-	@Column({ unique: true, default: '' })
+	@Column({ default: '' })
 	login: string
 
 	@Column({ default: '' })

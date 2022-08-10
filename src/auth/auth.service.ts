@@ -29,8 +29,8 @@ export class AuthService {
 	}
 
 	async register(dto: AuthDto) {
-		const createdUser = await this.userRepository.findOne({
-			where: { email: dto.email }
+		const createdUser = await this.userRepository.findOneBy({
+			email: dto.email
 		})
 		if (createdUser) throw new BadRequestException('Email занят')
 
@@ -52,7 +52,7 @@ export class AuthService {
 	async validateUser(dto: AuthDto) {
 		const user = await this.userRepository.findOne({
 			where: { email: dto.email },
-			select: ['id', 'email', 'login', 'password']
+			select: ['id', 'email', 'password']
 		})
 		if (!user) throw new NotFoundException('Пользователь не найден')
 
